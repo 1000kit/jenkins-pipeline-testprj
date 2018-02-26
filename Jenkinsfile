@@ -21,8 +21,7 @@ pipeline {
            script {
               echo '----- prepare release ------'
               sh ' pwd ; ls -la '
-              echo "POM_VERSION: $POM_VERSION"
-              echo "Version: $majorVersion - $minorVersion - $patchVersion - $buildVersion"
+              echo "POM_VERSION: $POM_VERSION ++ Version: $majorVersion - $minorVersion - $patchVersion - $buildVersion"
             }
       }
     }
