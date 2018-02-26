@@ -17,6 +17,7 @@ pipeline {
         buildVersion =  tkitpom.buildVersion('pom.xml')
 
         echo "Version: $majorVersion - $minorVersion - $patchVersion - $buildVersion"
-     }
+      }
+    }
    }
 }
