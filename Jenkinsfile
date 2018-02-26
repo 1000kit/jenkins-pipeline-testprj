@@ -21,7 +21,7 @@ pipeline {
            script {
               echo '----- prepare release ------'
               sh ' pwd ; ls -la '
-              echo "POM_VERSION: $POM_VERSION ++ Version: $tkitmajorVersion - $tkitminorVersion - $tkitpatchVersion - $tkitbuildVersion"
+              echo "POM_VERSION: $POM_VERSION ++ Version: $tkitmajorVersion - $tkitminorVersion - $tkitpatchVersion"
             }
       }
     }
