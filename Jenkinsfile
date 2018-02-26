@@ -7,10 +7,10 @@ pipeline {
   environment {
       POM_VERSION = readMavenPom(file: 'pom.xml').getVersion()
       version = tkitpom.version("pom.xml")
-      majorVersion =  tkitpom.majorVersion("pom.xml")
-      minorVersion =  tkitpom.minorVersion("pom.xml")
-      patchVersion =  tkitpom.patchVersion("pom.xml")
-      buildVersion =  tkitpom.buildVersion("pom.xml")
+      tkitmajorVersion =  tkitpom.majorVersion("pom.xml")
+      tkitminorVersion =  tkitpom.minorVersion("pom.xml")
+      tkitpatchVersion =  tkitpom.patchVersion("pom.xml")
+      tkitbuildVersion =  tkitpom.buildVersion("pom.xml")
   }
 
   stages {
@@ -21,7 +21,7 @@ pipeline {
            script {
               echo '----- prepare release ------'
               sh ' pwd ; ls -la '
-              echo "POM_VERSION: $POM_VERSION ++ Version: $majorVersion - $minorVersion - $patchVersion - $buildVersion"
+              echo "POM_VERSION: $POM_VERSION ++ Version: $tkitmajorVersion - $tkitminorVersion - $tkitpatchVersion - $tkitbuildVersion"
             }
       }
     }
