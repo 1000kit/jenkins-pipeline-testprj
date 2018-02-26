@@ -6,11 +6,11 @@ pipeline {
 
   environment {
       POM_VERSION = readMavenPom(file: 'pom.xml').getVersion()
-      version = tkitpom.version("pom.xml")
-      tkitmajorVersion =  tkitpom.majorVersion("pom.xml")
-      tkitminorVersion =  tkitpom.minorVersion("pom.xml")
-      tkitpatchVersion =  tkitpom.patchVersion("pom.xml")
-      tkitbuildVersion =  tkitpom.buildVersion("pom.xml")
+      def pomVersion = tkitpom.version("pom.xml")
+      def tkitmajorVersion = pomVersion.getMajor
+      def tkitminorVersion = pomVersion.getMinor
+      def tkitpatchVersion = pomVersion.getPatch
+      def tkitbuildVersion = pomVersion.getBuild
   }
 
   stages {
