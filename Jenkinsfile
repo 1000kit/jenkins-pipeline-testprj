@@ -4,6 +4,9 @@
 pipeline {
   agent any
 
+  environment {
+      POM_VERSION = readMavenPom(file: 'pom.xml').getVersion()
+  }
 
   stages {
 
@@ -11,6 +14,8 @@ pipeline {
       steps {
            script {
               echo '----- prepare release ------'
+              sh ' pwd ; ls -la '
+              echo "POM_VERSION: $POM_VERSION"
               version = tkitpom.version('pom.xml')
               majorVersion =  tkitpom.majorVersion('pom.xml')
               minorVersion =  tkitpom.minorVersion('pom.xml')
