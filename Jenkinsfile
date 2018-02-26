@@ -6,7 +6,7 @@ pipeline {
 
   environment {
       POM_VERSION = readMavenPom(file: 'pom.xml').getVersion()
-      pomVersion = tkitpom.version("pom.xml")
+      pomVersion = tkitpom.readVersion("pom.xml")
       tkitmajorVersion = pomVersion.getMajor()
       tkitminorVersion = pomVersion.getMinor()
       tkitpatchVersion = pomVersion.getPatch()
