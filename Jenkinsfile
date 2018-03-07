@@ -5,17 +5,8 @@ pipeline {
   agent any
 
   environment {
-      POM_VERSION = readMavenPom(file: 'pom.xml').getVersion()
-      pomVersion = tkitpom.setVersion(POM_VERSION)
-      
-      tkitmajorVersion = pomVersion.getMajor()
-      tkitminorVersion = pomVersion.getMinor()
-      tkitpatchVersion = pomVersion.getPatch()
-      tkitbuildVersion = pomVersion.getBuild()
-      
-      currentVersion = pomVersion.getCurrent()
-      releaseVersion = pomVersion.getRelease()
-      releaseIncVersion = pomVersion.increment(pomVersion.BUILD).getRelease()
+      POM_VERSION = readMavenPom(file: 'pom.xml').getVersion()     
+      releaseIncVersion = tkitpom.incrementRelease(POM_VERSION, 3)
    }
 
   stages {
@@ -26,8 +17,7 @@ pipeline {
            script {
  
               sh ' pwd ; ls -la '
-              echo "POM_VERSION: $POM_VERSION ++ Version: $tkitmajorVersion - $tkitminorVersion - $tkitpatchVersion"
-              echo "Current: $currentVersion -- RELEASE: $releaseVersion -- INC: $releaseIncVersion"
+              echo "INC: $releaseIncVersion"
             }
       }
     }
