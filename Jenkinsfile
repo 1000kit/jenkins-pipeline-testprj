@@ -16,20 +16,20 @@ pipeline {
            maintainer '1000kit'
            script {
               echo '----- prepare release ------'
-              tkitmajorVersion = pomVersion.getMajor()
+              //tkitmajorVersion = pomVersion.getMajor()
               echo '----- GetMinor ------'
-      		  tkitminorVersion = pomVersion.getMinor()
+      		  //tkitminorVersion = pomVersion.getMinor()
       		  echo '----- GetPatch ------'
-      		  tkitpatchVersion = pomVersion.getPatch()
+      		  //tkitpatchVersion = pomVersion.getPatch()
       		  echo '----- GetBuild ------'
-      	 	  tkitbuildVersion = pomVersion.getBuild()
+      	 	  //tkitbuildVersion = pomVersion.getBuild()
       
       			echo '----- GetCurrent ------'
-      		  currentVersion = pomVersion.getCurrent()
+      		  //currentVersion = pomVersion.getCurrent()
       		  echo '----- GetRelease ------'
-      		  releaseVersion = pomVersion.getRelease()
+      		  //releaseVersion = pomVersion.getRelease()
       		  echo '----- GetIncRelease ------'
-      		  releaseIncVersion = pomVersion.increment(pomVersion.BUILD).getRelease()
+      		  //releaseIncVersion = pomVersion.increment(pomVersion.BUILD).getRelease()
               
               sh ' pwd ; ls -la '
               echo "POM_VERSION: $POM_VERSION ++ Version: $tkitmajorVersion - $tkitminorVersion - $tkitpatchVersion"
