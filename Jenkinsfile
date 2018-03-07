@@ -11,6 +11,10 @@ pipeline {
       tkitminorVersion = pomVersion.getMinor()
       tkitpatchVersion = pomVersion.getPatch()
       tkitbuildVersion = pomVersion.getBuild()
+      
+      currentVersion = pomVersion.getCurrent()
+      releaseVersion = pomVersion.getRelease()
+      releaseIncVersion = pomVersion.increment(pomVersion.BUILD).getRelease()
   }
 
   stages {
@@ -22,6 +26,7 @@ pipeline {
               echo '----- prepare release ------'
               sh ' pwd ; ls -la '
               echo "POM_VERSION: $POM_VERSION ++ Version: $tkitmajorVersion - $tkitminorVersion - $tkitpatchVersion"
+              echo "Current: $currentVersion -- RELEASE: $releaseVersion -- INC: $releaseIncVersion"
             }
       }
     }
