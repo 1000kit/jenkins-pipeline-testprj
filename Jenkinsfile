@@ -5,27 +5,9 @@ pipeline {
   agent any
 
   environment {
-  	echo '----- Start Environment ------'
       POM_VERSION = readMavenPom(file: 'pom.xml').getVersion()
-      echo '----- POMVERSION ------'
-      pomVersion = tkitpom.readVersion("pom.xml")
-      echo '----- tkpitpom.readVersion ------'
-      tkitmajorVersion = pomVersion.getMajor()
-       echo '----- getMajora ------'
-      tkitminorVersion = pomVersion.getMinor()
-      echo '----- getMinor ------'
-      tkitpatchVersion = pomVersion.getPatch()
-      echo '----- getPatch ------'
-      tkitbuildVersion = pomVersion.getBuild()
-      echo '----- getbuild ------'
-      
-      currentVersion = pomVersion.getCurrent()
-      echo '----- getCurrent ------'
-      releaseVersion = pomVersion.getRelease()
-      echo '----- getRelease ------'
-      releaseIncVersion = pomVersion.increment(pomVersion.BUILD).getRelease()
-      echo '----- getReleaseInc ------'
-  }
+      pomVersion = tkitpom.serVersion(POM_VERSION)
+   }
 
   stages {
 
@@ -34,6 +16,21 @@ pipeline {
            maintainer '1000kit'
            script {
               echo '----- prepare release ------'
+              tkitmajorVersion = pomVersion.getMajor()
+              echo '----- GetMinor ------'
+      		  tkitminorVersion = pomVersion.getMinor()
+      		  echo '----- GetPatch ------'
+      		  tkitpatchVersion = pomVersion.getPatch()
+      		  echo '----- GetBuild ------'
+      	 	  tkitbuildVersion = pomVersion.getBuild()
+      
+      			echo '----- GetCurrent ------'
+      		  currentVersion = pomVersion.getCurrent()
+      		  echo '----- GetRelease ------'
+      		  releaseVersion = pomVersion.getRelease()
+      		  echo '----- GetIncRelease ------'
+      		  releaseIncVersion = pomVersion.increment(pomVersion.BUILD).getRelease()
+              
               sh ' pwd ; ls -la '
               echo "POM_VERSION: $POM_VERSION ++ Version: $tkitmajorVersion - $tkitminorVersion - $tkitpatchVersion"
               echo "Current: $currentVersion -- RELEASE: $releaseVersion -- INC: $releaseIncVersion"
