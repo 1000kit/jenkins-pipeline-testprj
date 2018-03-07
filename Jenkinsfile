@@ -15,7 +15,6 @@ pipeline {
       
       currentVersion = pomVersion.getCurrent()
       releaseVersion = pomVersion.getRelease()
-      releaseVersion = pomVersion.getRelease()
       releaseIncVersion = pomVersion.increment(pomVersion.BUILD).getRelease()
    }
 
