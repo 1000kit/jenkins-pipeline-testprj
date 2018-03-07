@@ -1,4 +1,4 @@
-package org.1000kit.jenkins;
+package org.tkit.jenkins;
 
 /**
  * Hello world!

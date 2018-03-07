@@ -1,4 +1,4 @@
-package org.1000kit.jenkins;
+package org.tkit.jenkins;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
