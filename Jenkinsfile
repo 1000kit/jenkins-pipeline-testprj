@@ -6,7 +6,7 @@ pipeline {
 
   environment {
       POM_VERSION = readMavenPom(file: 'pom.xml').getVersion()     
-      //releaseIncVersion = tkitpom.incrementRelease(POM_VERSION, 3)
+      releaseIncVersion = tkitpom.incrementRelease(POM_VERSION, 3)
    }
 
   stages {
