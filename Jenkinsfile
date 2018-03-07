@@ -5,16 +5,26 @@ pipeline {
   agent any
 
   environment {
+  	echo '----- Start Environment ------'
       POM_VERSION = readMavenPom(file: 'pom.xml').getVersion()
+      echo '----- POMVERSION ------'
       pomVersion = tkitpom.readVersion("pom.xml")
+      echo '----- tkpitpom.readVersion ------'
       tkitmajorVersion = pomVersion.getMajor()
+       echo '----- getMajora ------'
       tkitminorVersion = pomVersion.getMinor()
+      echo '----- getMinor ------'
       tkitpatchVersion = pomVersion.getPatch()
+      echo '----- getPatch ------'
       tkitbuildVersion = pomVersion.getBuild()
+      echo '----- getbuild ------'
       
       currentVersion = pomVersion.getCurrent()
+      echo '----- getCurrent ------'
       releaseVersion = pomVersion.getRelease()
+      echo '----- getRelease ------'
       releaseIncVersion = pomVersion.increment(pomVersion.BUILD).getRelease()
+      echo '----- getReleaseInc ------'
   }
 
   stages {
